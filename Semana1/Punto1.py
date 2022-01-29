@@ -122,7 +122,11 @@ ax = fig.add_subplot(1,1,1)
 def init():
     ax.set_xlim(-Limits[0],Limits[0])
     ax.set_ylim(-Limits[1],Limits[1])
-
+    
+#def EM(y,vx,vy,m,g):
+    #v = np.sqrt(vx**2+vy**2)
+    #E = 0.5*v**2 + m*g*y
+    
 def Update(i):
     
     plot = ax.clear()
@@ -135,6 +139,9 @@ def Update(i):
         
         vx = p.GetVelocityVector()[i,0]
         vy = p.GetVelocityVector()[i,1]
+        #m = p.GetM()
+        #g = p.GetAceleration()[i,1]
+        #E = EM(y,vx,m,g)
         
         circle = plt.Circle( (x,y), p.GetR(), color='k', fill=False)
         plot = ax.add_patch(circle)
@@ -142,3 +149,8 @@ def Update(i):
         
     return plot
 Animation = anim.FuncAnimation(fig,Update,frames=len(redt),init_func=init)
+
+
+
+
+
