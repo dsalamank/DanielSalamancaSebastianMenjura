@@ -149,3 +149,30 @@ def Update(i):
 
 Animation = anim.FuncAnimation(fig,Update,frames=len(redt),init_func=init)
 print("De la simulación realizada se observa que el tiempo que tarda la pelota en dejar de rebotar es de 27.4 segundos")
+
+
+def EM(t):
+    EM = []
+    init()
+    for p in Particles:
+        for i in range(len(t)):
+            y = p.GetRPositionVector()[i,1] + 20
+            m = p.GetM()
+            
+        
+            vx = p.GetVelocityVector()[i,0]
+            vy = p.GetVelocityVector()[i,1]
+            v = np.sqrt(vx**2 + vy**2)
+            #print(abs(y),v)
+            em = 0.5*m*v**2 + m*9.8*y
+            EM.append(em)
+
+    return EM
+
+plt.plot(redt,EM(redt))
+plt.scatter(redt,EM(redt))
+plt.xlabel('Tiempo')
+plt.ylabel('Energía mecánica')
+plt.title("Energía mecanica vs tiempo")
+plt.savefig("1")
+plt.show()
