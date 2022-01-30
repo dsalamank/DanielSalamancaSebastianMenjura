@@ -28,9 +28,6 @@ class Particle():
         self.SetPosition(i,self.r)
         self.SetVelocity(i,self.v)
         
-       # print(self.r)
-        
-        # Euler method
         self.r += self.dt * self.v
         self.v += self.dt * self.a
     
