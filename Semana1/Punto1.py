@@ -78,18 +78,25 @@ dt = 0.01
 tmax = 30
 t = np.arange(0,tmax+dt,dt)
 
-def GetParticle(Limit,Velo,Dim=2,dt=0.1):
+def GetParticles(NParticles,Limit,Velo,Dim=2,dt=0.1):
     
-    x0 = np.array([-15.,-5.])
-    v0 = np.array([1.,0.])
-    a0 = np.array([0,-9.8])
+    Particles_ = []
+    
+    for i in range(NParticles):
         
-    p = Particle(x0,v0,a0,t,1.,1.0,i)
+        x0 = np.array([-15.,-5.])
+        v0 = np.array([1.,0.])
+        a0 = np.array([0,-9.8])
         
-    return p
+        p = Particle(x0,v0,a0,t,1.,1.0,i)
+        
+        Particles_.append(p)
+        
+    return Particles_
+
 Limits = np.array([20.,20.])
 
-def RunSimulation(t,NParticles = 100, Velo = 6):
+def RunSimulation(t,NParticles = 1, Velo = 6):
     
     Particles = GetParticles(NParticles,Limits[0],Velo = Velo,dt=dt)
     
