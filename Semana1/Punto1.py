@@ -68,7 +68,8 @@ class Particle():
             if i%factor == 0:
                 self.RrVector = np.vstack([self.RrVector,self.rVector[i]])
                 
-
+#Punto (a)
+#Evaluar por separado con el insiso (b)
 
 dt = 0.01
 tmax = 30
@@ -151,9 +152,10 @@ Animation = anim.FuncAnimation(fig,Update,frames=len(redt),init_func=init)
 print("De la simulación realizada se observa que el tiempo que tarda la pelota en dejar de rebotar es de 27.4 segundos")
 
 
+#Punto (b)
+#Evaluar por separado con el insiso (a)
 def EM(t):
     EM = []
-    init()
     for p in Particles:
         for i in range(len(t)):
             y = p.GetRPositionVector()[i,1] + 20
@@ -170,9 +172,7 @@ def EM(t):
     return EM
 
 plt.plot(redt,EM(redt))
-plt.scatter(redt,EM(redt))
 plt.xlabel('Tiempo')
 plt.ylabel('Energía mecánica')
 plt.title("Energía mecanica vs tiempo")
-plt.savefig("1")
 plt.show()
