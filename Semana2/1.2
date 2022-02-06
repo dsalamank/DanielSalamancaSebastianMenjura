@@ -1,1 +1,31 @@
+%matplotlib notebook 
+import numpy as np
+import matplotlib.pyplot as plt
+from celluloid import Camera
+import scipy as sp
+from scipy import integrate
+
+
+fig = plt.figure(figsize=(6,6))
+camera = Camera(fig)
+
+def f(t):
+    return t
+
+def GetFourier(t,T,N):
+    
+    a0, error0 = integrate.quad( lambda t: f(t), -0.5*T , 0.5*T )
+    a0 *= 2./T
+    
+    y = a0
+    
+    for n in range(1,N):
+        an, erroran = integrate.quad( lambda t: f(t)*np.cos( (2*np.pi*n*t)/T ), -0.5*T , 0.5*T )
+        bn, errorbn = integrate.quad( lambda t: f(t)*np.sin( (2*np.pi*n*t)/T ), -0.5*T , 0.5*T )
+        y += 2.*an*np.cos( (2*np.pi*n*t)/T )/T + 2.*bn*np.sin( (2*np.pi*n*t)/T )/T 
+        
+    return y
+t = np.arange(-4,4,0.01)
+y = GetFourier(t,2*np.pi(),50)
+plt.plot(t,y,marker='.')
 
