@@ -7,7 +7,7 @@
 
 double f(double x)
 {
- return std::exp(x);
+ return std::exp(-1*x*x);
 }
 double Derivada(double x)
 {
@@ -49,8 +49,11 @@ int main()
 import numpy as np
 import matplotlib.pyplot as plt
 
-archivo = open("MisDatos.dat","r")
-leer = archivo.read()
-x = leer[0]
-y = leer[1]
+archivo = np.loadtxt("MisDatos.dat")
+
+x = archivo[:,0]
+y = archivo[:,1]
 plt.plot(x,y)
+plt.title("Derivada en función de x")
+plt.xlabel("x")
+plt.ylabel("Derivada de la función")
