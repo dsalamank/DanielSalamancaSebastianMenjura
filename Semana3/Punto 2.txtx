@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-datos = np.loadtxt("https://github.com/asegura4488/Database/blob/main/MetodosComputacionalesReforma/EnergiaPotencialGas2D.txt)
-
+datos = np.loadtxt("https://raw.github.com/asegura4488/Database/main/MetodosComputacionalesReforma/EnergiaPotencialGas2D.txt")
 tiempo = datos[:,0]
 potencial_medio = datos[:,1] - np.mean(datos[:,1])
 n = len(potencial_medio)
@@ -20,8 +19,8 @@ M_pot_I = np.fft.ifft(M_pot__)
 M_pot_II = M_pot_I*len(M_pot_I) + np.mean(potencial_medio)
 T_pot_II = np.linspace(min(tiempo),max(tiempo), len(M_pot_II))
 
-fig = plt.figure(figsize(5,5))
-gr = fig.add.subplot(111)
+fig = plt.figure(figsize=(5,5))
+gr = fig.add_subplot(111)
 gr.set_title(f"Tiempo libre = {1/f_max} pasos temporales")
 gr.scatter(tiempo,potencial_medio, label = "Original de panini")
 gr.scatter(T_pot_II,M_pot_II, label = "Fundamental", c = "orange")
