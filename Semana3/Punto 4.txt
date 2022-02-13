@@ -1,3 +1,6 @@
+
+//Aca empieza la progrmación en C++
+
 #include <iostream>
 #include <fstream>
 #include <math.h>
@@ -39,3 +42,15 @@ int main()
 }
 
 
+#################################################################################################################################################################################
+
+#Ahora empieza la parte de progrmación en python
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+archivo = open("MisDatos.dat","r")
+leer = archivo.read()
+x = leer[0]
+y = leer[1]
+plt.plot(x,y)
